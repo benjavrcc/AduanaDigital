@@ -356,7 +356,11 @@ window.submitViajero = function(){
 
   goTo("screen8");
 
-  setTimeout(()=> goBack(),6000);
+  setTimeout(() => {
+  historyStack = ["screen1"];   // reinicia historial
+  showScreen("screen1");        // muestra la primera pantalla
+}, 6000);
+
 }
 
 // ---------------------------
@@ -379,6 +383,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
