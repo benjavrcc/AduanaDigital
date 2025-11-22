@@ -7,13 +7,22 @@
 <title>Aduana Digital</title>
 
 <style>
+  /* ============================================================
+     ESTILOS BASE
+  ============================================================ */
+
+  /* Para evitar desbordes horizontales */
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     font-family: Arial, sans-serif;
     padding: 20px;
     background: #0D0FBA;
     color: white;
     margin: 0;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
 
   .screen {
@@ -35,14 +44,16 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
+    width: 100%; /* para que quede igual que inputs */
   }
 
-  input, select {
+  input, select, textarea {
     padding: 12px;
     border-radius: 10px;
     border: none;
     width: 100%;
     margin-bottom: 10px;
+    box-sizing: border-box; /* IMPORTANTÍSIMO */
   }
 
   .logo {
@@ -57,10 +68,11 @@
     width: fit-content;
   }
 
+  /* ❌ ELIMINAMOS EL SCROLL INTERNO DEL FORMULARIO */
   #form_viajero {
-    max-height: 70vh;
-    overflow-y: auto;
-    padding-right: 10px;
+    overflow: visible !important;
+    max-height: none !important;
+    padding-right: 0 !important;
   }
 
   .hidden {
@@ -76,7 +88,9 @@
     color: #00FF7F;
   }
   
-  /* --- OPTIMIZACIÓN MÓVIL --- */
+  /* ============================================================
+     OPTIMIZACIÓN MÓVIL
+  ============================================================ */
 
 @media(max-width: 768px) {
 
@@ -90,14 +104,12 @@
   }
 
   input, select {
-    width: 100%;
     font-size: 20px !important;
     padding: 18px !important;
     border-radius: 14px;
   }
 
   button, .btn {
-    width: 100%;
     font-size: 22px !important;
     padding: 20px !important;
     border-radius: 16px;
@@ -110,11 +122,6 @@
 
   .logo {
     width: 260px !important;
-  }
-
-  #form_viajero {
-    max-height: 65vh;
-    padding-right: 12px;
   }
 }
 
@@ -357,9 +364,9 @@ window.submitViajero = function(){
   goTo("screen8");
 
   setTimeout(() => {
-  historyStack = ["screen1"];   // reinicia historial
-  showScreen("screen1");        // muestra la primera pantalla
-}, 6000);
+    historyStack = ["screen1"];
+    showScreen("screen1");
+  }, 6000);
 
 }
 
@@ -383,8 +390,6 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
-
-
 
 
 
