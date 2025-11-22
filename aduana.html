@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Aduana Digital</title>
 
 <style>
@@ -73,6 +75,49 @@
     font-size: 120px;
     color: #00FF7F;
   }
+
+  /* --- OPTIMIZACIÓN MÓVIL --- */
+
+@media(max-width: 768px) {
+
+  body {
+    padding: 20px;
+  }
+
+  h1, h2, h3, label, p {
+    font-size: 22px !important;
+    line-height: 1.3;
+  }
+
+  input, select {
+    width: 100%;
+    font-size: 20px !important;
+    padding: 18px !important;
+    border-radius: 14px;
+  }
+
+  button, .btn {
+    width: 100%;
+    font-size: 22px !important;
+    padding: 20px !important;
+    border-radius: 16px;
+  }
+
+  .back-btn {
+    font-size: 22px !important;
+    padding: 10px 0;
+  }
+
+  .logo {
+    width: 260px !important;
+  }
+
+  #form_viajero {
+    max-height: 65vh;
+    padding-right: 12px;
+  }
+}
+
 </style>
 </head>
 
@@ -334,6 +379,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
