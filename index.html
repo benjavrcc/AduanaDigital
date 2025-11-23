@@ -297,7 +297,7 @@ window.saveDatetime = function(){
 }
 
 window.saveTravelers = function(){
-  data.cantidad_viajeros = cantidad_viajeros.value;
+  data.cantidad_viajeros = parseInt(cantidad_viajeros.value);
   goTo("screen7");
 }
 
@@ -421,6 +421,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
