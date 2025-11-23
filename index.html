@@ -379,7 +379,8 @@ fetch("https://aduana-backend-fastapi-1.onrender.com/registrar", {
     },
     body: JSON.stringify({
         fecha_llegada: data.fecha_llegada,
-        hora_llegada: data.hora_llegada
+        hora_llegada: data.hora_llegada,
+        cantidad_viajeros: data.cantidad_viajeros
     })
 })
 .then(res => res.json())
@@ -420,6 +421,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
