@@ -371,6 +371,26 @@ window.submitViajero = function(){
   if (!data.viajeros) data.viajeros = [];
   data.viajeros.push(viajero);
 
+  // ===== ENVIAR LOS DATOS AL BACKEND =====
+fetch("https://TU-BACKEND.onrender.com/registrar", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        fecha_llegada: data.fecha_llegada,
+        hora_llegada: data.hora_llegada
+    })
+})
+.then(res => res.json())
+.then(res => {
+    console.log("Respuesta del backend:", res);
+})
+.catch(err => {
+    console.error("Error enviando al backend:", err);
+});
+
+
   goTo("screen8");
 
   setTimeout(() => {
@@ -400,6 +420,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
