@@ -7,15 +7,7 @@
 <title>Aduana Digital</title>
 
 <style>
-  /* ============================================================
-     ESTILOS BASE
-  ============================================================ */
-
-  /* Para evitar desbordes horizontales */
-  * {
-    box-sizing: border-box;
-  }
-
+  * { box-sizing: border-box; }
   body {
     font-family: Arial, sans-serif;
     padding: 20px;
@@ -32,9 +24,7 @@
     min-height: 90vh;
   }
 
-  .active {
-    display: flex;
-  }
+  .active { display: flex; }
 
   .btn {
     padding: 12px 20px;
@@ -44,16 +34,15 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
-    width: 100%; /* para que quede igual que inputs */
+    width: 100%;
   }
 
-  input, select, textarea {
+  input, select {
     padding: 12px;
     border-radius: 10px;
     border: none;
     width: 100%;
     margin-bottom: 10px;
-    box-sizing: border-box; /* IMPORTANTÍSIMO */
   }
 
   .logo {
@@ -65,204 +54,27 @@
   .back-btn {
     font-size: 18px;
     cursor: pointer;
-    width: fit-content;
   }
 
-  /* ❌ ELIMINAMOS EL SCROLL INTERNO DEL FORMULARIO */
-  #form_viajero {
-    overflow: visible !important;
-    max-height: none !important;
-    padding-right: 0 !important;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .center {
-    text-align: center;
-  }
-
-  .checkmark {
-    font-size: 120px;
-    color: #00FF7F;
-  }
+  .hidden { display: none; }
+  .center { text-align: center; }
 
   .check-image {
-  width: 200px;
-  margin-top: 10px;
-  display: block;
-  margin: 0 auto;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
   }
-
-  
-  /* ============================================================
-     OPTIMIZACIÓN MÓVIL
-  ============================================================ */
-
-@media(max-width: 768px) {
-
-  body {
-    padding: 20px;
-  }
-
-  h1, h2, h3, label, p {
-    font-size: 22px !important;
-    line-height: 1.3;
-  }
-
-  input, select {
-    font-size: 20px !important;
-    padding: 18px !important;
-    border-radius: 14px;
-  }
-
-  button, .btn {
-    font-size: 22px !important;
-    padding: 20px !important;
-    border-radius: 16px;
-  }
-
-  .back-btn {
-    font-size: 22px !important;
-    padding: 10px 0;
-  }
-
-  .logo {
-    width: 260px !important;
-  }
-}
-
 </style>
-</head>
-
-<body>
-
-<!-- PANTALLA 1 -->
-<div id="screen1" class="screen active">
-  <img src="AduanaDigital_logo (1).png" class="logo">
-  <h1 class="center">Comienza los trámites para tu viaje</h1>
-  <button class="btn" onclick="goTo('screen2')">Comienza tu viaje</button>
-</div>
-
-<!-- PANTALLA 2 -->
-<div id="screen2" class="screen">
-  <div class="back-btn" onclick="goBack()">← Atrás</div>
-   <img src="AduanaDigital_logo (1).png" class="logo">
-  <h2>¿Quiere usted salir o entrar a Chile?</h2>
-  <button class="btn" onclick="save('movimiento','entrada'); goTo('screen3')">Entrar</button>
-  <button class="btn" onclick="save('movimiento','salida'); goTo('screen3')">Salir</button>
-</div>
-
-<!-- PANTALLA 3 -->
-<div id="screen3" class="screen">
-  <div class="back-btn" onclick="goBack()">← Atrás</div>
-   <img src="AduanaDigital_logo (1).png" class="logo">
-  <h2>Selecciona el paso fronterizo</h2>
-  <button class="btn" onclick="save('paso_fronterizo','Los Libertadores'); goTo('screen4')">Los Libertadores</button>
-</div>
-
-<!-- PANTALLA 4 -->
-<div id="screen4" class="screen">
-  <div class="back-btn" onclick="goBack()">← Atrás</div>
-   <img src="AduanaDigital_logo (1).png" class="logo">
-  <h2>¿Qué medio de transporte utilizará en su viaje?</h2>
-  <button class="btn" onclick="save('transporte','auto'); goTo('screen5')">Auto</button>
-</div>
-
-<!-- PANTALLA 5 -->
-<div id="screen5" class="screen">
-  <div class="back-btn" onclick="goBack()">← Atrás</div>
-   <img src="AduanaDigital_logo (1).png" class="logo">
-  <h2>Seleccione fecha y hora estimada en la que llegará a la aduana</h2>
-
-  <label>Fecha</label>
-  <input type="date" id="fecha_llegada">
-
-  <label>Hora</label>
-  <input type="time" id="hora_llegada">
-
-  <button class="btn" onclick="saveDatetime()">Siguiente</button>
-</div>
-
-<!-- PANTALLA 6 -->
-<div id="screen6" class="screen">
-  <div class="back-btn" onclick="goBack()">← Atrás</div>
-   <img src="AduanaDigital_logo (1).png" class="logo">
-
-  <h2>¿Cuántas personas viajan?</h2>
-  <select id="cantidad_viajeros">
-      <option value="">Seleccionar</option>
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option><option>6</option>
-      <option>7</option><option>8</option><option>9</option><option>10</option>
-  </select>
-
-  <button class="btn" onclick="saveTravelers()">Siguiente</button>
-</div>
-
-<!-- PANTALLA 7 -->
-<div id="screen7" class="screen">
-  <div class="back-btn" onclick="goBack()">← Atrás</div>
-   <img src="AduanaDigital_logo (1).png" class="logo">
-
-  <h2>Ingrese los datos del viajero</h2>
-
-  <div id="form_viajero">
-
-    <label>Nacionalidad</label>
-    <select id="nacionalidad">
-      <option>Chilena</option>
-      <option>Extranjero residente</option>
-      <option>Extranjera</option>
-    </select>
-
-    <div id="extra_pais" class="hidden">
-      <label>País</label>
-      <input type="text" id="pais_extranjero">
-    </div>
-
-    <label>Nombres</label>
-    <input id="nombres" type="text">
-
-    <label>Apellidos</label>
-    <input id="apellidos" type="text">
-
-    <label>RUN (dejar en blanco en caso de ser extranjero no residente)</label>
-    <input id="run" type="text">
-
-    <div id="extra_doc" class="hidden">
-      <label>Tipo de documento</label>
-      <select id="tipo_doc">
-        <option>Pasaporte</option>
-        <option>DNI</option>
-      </select>
-
-      <label>Número de documento</label>
-      <input id="num_doc">
-    </div>
-
-    <label>Fecha de nacimiento</label>
-    <select id="nac_y"></select>
-    <select id="nac_m"></select>
-    <select id="nac_d"></select>
-
-  </div>
-
-  <button class="btn" onclick="submitViajero()">Registrar viajero</button>
-</div>
-
-<!-- PANTALLA 8 -->
-<div id="screen8" class="screen center">
-  <img src="AduanaDigital_logo (1).png" class="logo">
-
-  <!-- NUEVA IMAGEN DEL CHECK -->
-  <img src="pngegg 1 (1).png" class="check-image">
-  <h2>Viajero registrado exitosamente</h2>
-</div>
 
 <script>
-// ESPERAR A QUE TODO EL DOM EXISTA
+// ===========================================
+// CONFIGURACIÓN DEL BACKEND
+// ===========================================
+const API = "https://aduana-backend-node.vercel.app/api";
+
+// ===========================================
+// SISTEMA DE PANTALLAS
+// ===========================================
 document.addEventListener("DOMContentLoaded", () => {
 
 let data = {};
@@ -286,41 +98,46 @@ window.goBack = function(){
   }
 }
 
-window.save = function(key,val){
-  data[key] = val;
-}
+// ===========================================
+// GUARDAR DATOS
+// ===========================================
+window.save = (key,val) => data[key] = val;
 
 window.saveDatetime = function(){
-  data.fecha_llegada = fecha_llegada.value;
-  data.hora_llegada = hora_llegada.value;
+  data.fecha_llegada = document.getElementById("fecha_llegada").value;
+  data.hora_llegada  = document.getElementById("hora_llegada").value;
   goTo("screen6");
 }
 
 window.saveTravelers = function(){
-  data.cantidad_viajeros = parseInt(cantidad_viajeros.value);
+  data.cantidad_viajeros = parseInt(document.getElementById("cantidad_viajeros").value);
   goTo("screen7");
 }
 
-// ---------------------------
+// ===========================================
 // NACIONALIDAD
-// ---------------------------
-nacionalidad.onchange = function() {
+// ===========================================
+document.getElementById("nacionalidad").onchange = function() {
 
-  extra_pais.classList.add("hidden");
-  extra_doc.classList.add("hidden");
+  document.getElementById("extra_pais").classList.add("hidden");
+  document.getElementById("extra_doc").classList.add("hidden");
 
-  if (nacionalidad.value !== "Chilena"){
-    extra_pais.classList.remove("hidden");
+  if (this.value !== "Chilena"){
+    document.getElementById("extra_pais").classList.remove("hidden");
   }
-  if (nacionalidad.value === "Extranjero residente"){
-    extra_doc.classList.remove("hidden");
+  if (this.value === "Extranjero residente"){
+    document.getElementById("extra_doc").classList.remove("hidden");
   }
 };
 
-// ---------------------------
-// FECHAS
-// ---------------------------
+// ===========================================
+// FECHAS DE NACIMIENTO
+// ===========================================
 function cargarFechas(){
+  const nac_y = document.getElementById("nac_y");
+  const nac_m = document.getElementById("nac_m");
+  const nac_d = document.getElementById("nac_d");
+
   for (let y = 2025; y >= 1900; y--){
     nac_y.innerHTML += `<option>${y}</option>`;
   }
@@ -329,81 +146,79 @@ function cargarFechas(){
     "Enero","Febrero","Marzo","Abril","Mayo","Junio",
     "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
   ];
+
   meses.forEach((m,i)=>{
     nac_m.innerHTML += `<option value="${i+1}">${m}</option>`;
   });
 
+  function actualizarDias(){
+    let y = parseInt(nac_y.value);
+    let m = parseInt(nac_m.value);
+    let dias = new Date(y, m, 0).getDate();
+    nac_d.innerHTML = "";
+    for (let d = 1; d <= dias; d++){
+      nac_d.innerHTML += `<option>${d}</option>`;
+    }
+  }
+
+  nac_y.onchange = actualizarDias;
+  nac_m.onchange = actualizarDias;
+
   actualizarDias();
 }
 
-function actualizarDias(){
-  let y = parseInt(nac_y.value);
-  let m = parseInt(nac_m.value);
-  let diasEnMes = new Date(y, m, 0).getDate();
-  nac_d.innerHTML = "";
-  for (let d = 1; d <= diasEnMes; d++){
-    nac_d.innerHTML += `<option>${d}</option>`;
-  }
-}
-
-nac_y.onchange = actualizarDias;
-nac_m.onchange = actualizarDias;
-
 cargarFechas();
 
-// ---------------------------
-// GUARDAR FORMULARIO
-// ---------------------------
+// ===========================================
+// ENVIAR VIAJERO AL BACKEND
+// ===========================================
 window.submitViajero = function(){
+
   const viajero = {
-    nacionalidad: nacionalidad.value,
-    pais_extranjero: pais_extranjero?.value || "",
-    nombres: nombres.value,
-    apellidos: apellidos.value,
-    run: run.value,
-    tipo_doc: tipo_doc?.value || "",
-    num_doc: num_doc?.value || "",
-    nacimiento_y: nac_y.value,
-    nacimiento_m: nac_m.value,
-    nacimiento_d: nac_d.value
+    nacionalidad: document.getElementById("nacionalidad").value,
+    pais_extranjero: document.getElementById("pais_extranjero").value || "",
+    nombres: document.getElementById("nombres").value,
+    apellidos: document.getElementById("apellidos").value,
+    run: document.getElementById("run").value,
+    tipo_doc: document.getElementById("tipo_doc").value || "",
+    num_doc: document.getElementById("num_doc").value || "",
+    nacimiento_y: document.getElementById("nac_y").value,
+    nacimiento_m: document.getElementById("nac_m").value,
+    nacimiento_d: document.getElementById("nac_d").value
   };
 
   if (!data.viajeros) data.viajeros = [];
   data.viajeros.push(viajero);
 
-  // ===== ENVIAR LOS DATOS AL BACKEND =====
-fetch("https://aduana-backend-node.vercel.app/api/registrar", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        fecha_llegada: data.fecha_llegada,
-        hora_llegada: data.hora_llegada,
-        cantidad_viajeros: data.cantidad_viajeros
-    })
-})
-.then(res => res.json())
-.then(res => {
-    console.log("Respuesta del backend:", res);
-})
-.catch(err => {
-    console.error("Error enviando al backend:", err);
-});
+  // ===========================================
+  // ENVIAR A BACKEND NODE.JS
+  // ===========================================
+  fetch(`${API}/registrar`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+          fecha_llegada: data.fecha_llegada,
+          hora_llegada: data.hora_llegada,
+          cantidad_viajeros: data.cantidad_viajeros
+      })
+  })
+  .then(res => res.json())
+  .then(res => console.log("Respuesta backend:", res))
+  .catch(err => console.error("Error enviando:", err));
 
-
+  // Pantalla final
   goTo("screen8");
 
+  // Reiniciar flujo
   setTimeout(() => {
     historyStack = ["screen1"];
     showScreen("screen1");
   }, 6000);
+};
 
-}
-
-// ---------------------------
-// SWIPE DERECHA = ATRÁS
-// ---------------------------
+// ===========================================
+// SWIPE ATRÁS EN CELULAR
+// ===========================================
 let touchStartX = 0;
 
 document.addEventListener("touchstart", e => {
@@ -416,23 +231,124 @@ document.addEventListener("touchend", e => {
   }
 });
 
-}); // FIN DOM LOADED
+}); // FIN DOMContentLoaded
 </script>
+
+</head>
+<body>
+
+<!-- ============================= -->
+<!-- PANTALLAS -->
+<!-- ============================= -->
+
+<div id="screen1" class="screen active">
+  <img src="AduanaDigital_logo (1).png" class="logo">
+  <h1 class="center">Comienza los trámites para tu viaje</h1>
+  <button class="btn" onclick="goTo('screen2')">Comienza tu viaje</button>
+</div>
+
+<div id="screen2" class="screen">
+  <div class="back-btn" onclick="goBack()">← Atrás</div>
+  <img src="AduanaDigital_logo (1).png" class="logo">
+  <h2>¿Quiere usted salir o entrar a Chile?</h2>
+  <button class="btn" onclick="save('movimiento','entrada'); goTo('screen3')">Entrar</button>
+  <button class="btn" onclick="save('movimiento','salida'); goTo('screen3')">Salir</button>
+</div>
+
+<div id="screen3" class="screen">
+  <div class="back-btn" onclick="goBack()">← Atrás</div>
+  <img src="AduanaDigital_logo (1).png" class="logo">
+  <h2>Selecciona el paso fronterizo</h2>
+  <button class="btn" onclick="save('paso_fronterizo','Los Libertadores'); goTo('screen4')">Los Libertadores</button>
+</div>
+
+<div id="screen4" class="screen">
+  <div class="back-btn" onclick="goBack()">← Atrás</div>
+  <img src="AduanaDigital_logo (1).png" class="logo">
+  <h2>¿Qué medio de transporte utilizará en su viaje?</h2>
+  <button class="btn" onclick="save('transporte','auto'); goTo('screen5')">Auto</button>
+</div>
+
+<div id="screen5" class="screen">
+  <div class="back-btn" onclick="goBack()">← Atrás</div>
+  <img src="AduanaDigital_logo (1).png" class="logo">
+  <h2>Seleccione fecha y hora estimada</h2>
+
+  <label>Fecha</label>
+  <input type="date" id="fecha_llegada">
+
+  <label>Hora</label>
+  <input type="time" id="hora_llegada">
+
+  <button class="btn" onclick="saveDatetime()">Siguiente</button>
+</div>
+
+<div id="screen6" class="screen">
+  <div class="back-btn" onclick="goBack()">← Atrás</div>
+  <img src="AduanaDigital_logo (1).png" class="logo">
+
+  <h2>¿Cuántas personas viajan?</h2>
+  <select id="cantidad_viajeros">
+      <option value="">Seleccionar</option>
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option><option>6</option>
+      <option>7</option><option>8</option><option>9</option><option>10</option>
+  </select>
+
+  <button class="btn" onclick="saveTravelers()">Siguiente</button>
+</div>
+
+<div id="screen7" class="screen">
+  <div class="back-btn" onclick="goBack()">← Atrás</div>
+  <img src="AduanaDigital_logo (1).png" class="logo">
+
+  <h2>Ingrese los datos del viajero</h2>
+
+  <label>Nacionalidad</label>
+  <select id="nacionalidad">
+    <option>Chilena</option>
+    <option>Extranjero residente</option>
+    <option>Extranjera</option>
+  </select>
+
+  <div id="extra_pais" class="hidden">
+    <label>País</label>
+    <input type="text" id="pais_extranjero">
+  </div>
+
+  <div id="extra_doc" class="hidden">
+    <label>Tipo de documento</label>
+    <select id="tipo_doc">
+      <option>Pasaporte</option>
+      <option>DNI</option>
+    </select>
+  
+    <label>Número de documento</label>
+    <input id="num_doc">
+  </div>
+
+  <label>Nombres</label>
+  <input id="nombres" type="text">
+
+  <label>Apellidos</label>
+  <input id="apellidos" type="text">
+
+  <label>RUN</label>
+  <input id="run" type="text">
+
+  <label>Fecha de nacimiento</label>
+  <select id="nac_y"></select>
+  <select id="nac_m"></select>
+  <select id="nac_d"></select>
+
+  <button class="btn" onclick="submitViajero()">Registrar viajero</button>
+</div>
+
+<div id="screen8" class="screen center">
+  <img src="AduanaDigital_logo (1).png" class="logo">
+  <img src="pngegg 1 (1).png" class="check-image">
+  <h2>Viajero registrado exitosamente</h2>
+</div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
