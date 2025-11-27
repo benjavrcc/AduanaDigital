@@ -68,9 +68,9 @@
 
 <script>
 // ===========================================
-// CONFIGURACIÓN DEL BACKEND
+// CONFIGURACIÓN DEL BACKEND FASTAPI
 // ===========================================
-const API = "https://aduana-backend-node.vercel.app/api";
+const API = "https://aduanadigital-backend-fastapi.onrender.com/funcionarios";
 
 // ===========================================
 // SISTEMA DE PANTALLAS
@@ -170,7 +170,7 @@ function cargarFechas(){
 cargarFechas();
 
 // ===========================================
-// ENVIAR VIAJERO AL BACKEND
+// ENVIAR VIAJERO AL BACKEND FASTAPI
 // ===========================================
 window.submitViajero = function(){
 
@@ -191,7 +191,7 @@ window.submitViajero = function(){
   data.viajeros.push(viajero);
 
   // ===========================================
-  // ENVIAR A BACKEND NODE.JS
+  // ENVIAR A BACKEND FASTAPI
   // ===========================================
   fetch(`${API}/registrar`, {
       method: "POST",
