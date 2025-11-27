@@ -372,7 +372,7 @@ window.submitViajero = function(){
   data.viajeros.push(viajero);
 
   // ===== ENVIAR LOS DATOS AL BACKEND =====
-fetch("https://aduana-backend-fastapi-1.onrender.com/registrar", {
+fetch("https://aduana-backend-node.vercel.app/registrar", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -421,6 +421,7 @@ document.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
